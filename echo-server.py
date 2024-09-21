@@ -18,7 +18,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 break
             print(f"Received client message: '{data!r}' [{len(data)} bytes]")
             print(f"echoing '{data!r}' back to client")
-            # conn.sendall(data)
-            conn.sendall("I'm not home!".encode('utf-8'))
+            conn.sendall(data)
+            # conn.sendall("I'm not home!".encode('utf-8'))
 
 print("server is done!")

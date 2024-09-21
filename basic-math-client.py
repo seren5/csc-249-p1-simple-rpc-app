@@ -17,10 +17,9 @@ def run_client():
 
 def talk_to_server(sock):
     
-    
     exit_loop = False
     while exit_loop == False:
-        msg = input("What (addition/subtraction) equation would you like solved? (Please enter your equation in the following format: +1:3:5 or -1:3:5. The order of the numbers matter.)")
+        msg = input("What (addition/subtraction) equation would you like solved? (Please enter your equation in the following format: +1:3:5 or -1:3:5. The order of the numbers matter.)   ")
         if msg == "quit":
             print("client quitting at operator request")
             exit(0)
@@ -44,7 +43,8 @@ def talk_to_server(sock):
     if not answer:
         return False
     else:
-        print(f"Received response: '{answer!r}' from server -> [{len(answer)} bytes]")
+        answer = answer.decode('utf-8') # to remove the 'b' in front of the print
+        print(f"Received response: '{answer}' from server -> [{len(answer)} bytes]")
         return answer
 
 
@@ -56,27 +56,3 @@ def talk_to_server(sock):
 if __name__ == "__main__":
     run_client()
     print("test client is done, exiting...")   
-    
-    
-
-
-
-    
-    # if msg == 'quit':
-    #     print("client quitting at operator request")
-    #     return False
-    # print(f"sending message '{msg}' to server")
-    # sock.sendall(msg.encode('utf-8'))
-    # print("message sent, waiting for reply")
-    # reply = sock.recv(1024)
-    # if not reply:
-    #     return False
-    # else:
-    #     print(f"received reply '{reply}' from server")
-    #     return reply
-
-
-
-
-# print(f"Received response: '{data!r}' [{len(data)} bytes]")
-# print("client is done!") 
