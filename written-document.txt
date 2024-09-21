@@ -1,0 +1,28 @@
+Client-server message format
+The client is prompted to send an addition equation or subtraction equation to the server. Their input is checked to make sure it isn't empty and contains the numbers and signs necessary. Then, the server receives the message, and conducts the operations, then returns the answers to the client, while showing some of the process in the server.
+
+The Client->Server Message Format and Server->Client Message Format can be seen in command-line-trace-client and command-line-trace-server.
+
+The example output is similar to that of the example in the readme:
+Client Trade
+client starting - connecting to server at IP 127.0.0.1 and port 65432
+connection established
+What (addition/subtraction) equation would you like solved? (Please enter your equation in the following format: +1:3:5 or -1:3:5. The order of the numbers matter.)   +1:3:5
+message sent, waiting for reply
+Received response: '1+3+5=9' from server -> [7 bytes]
+
+
+
+Server Trace
+basic math server starting - listening for connections at IP 127.0.0.1 and port 65432
+Connected established with ('127.0.0.1', 57248)
+Received client message: 'b'+1:3:5'' [6 bytes]
+requested operation is addition
+request includes 3 arguments: 1 3 5
+result of operation: 9
+sending result message 1+3+5=9
+server is done!
+
+
+Acknowledgments
+I did not collaborate on this project with others, but did use a lot of Stack Overflow. The references can be found in references.txt
