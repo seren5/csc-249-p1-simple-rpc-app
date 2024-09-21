@@ -13,11 +13,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print(f"Connected established with {addr}")
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(1024) # 1024 => number of bytes
             if not data:
                 break
             print(f"Received client message: '{data!r}' [{len(data)} bytes]")
             print(f"echoing '{data!r}' back to client")
-            conn.sendall(data)
+            # conn.sendall(data)
+            conn.sendall("I'm not home!".encode('utf-8'))
 
 print("server is done!")
